@@ -9,10 +9,12 @@ const todoRoutes = require('./routes/todos');
 // Allows data to come in as put/post request
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/views'));
 
 // Root route
 app.get('/', function(req, res) {
-    res.json({message: "hello"});
+    res.sendFile("index.html");
 })
 
 // Shortcut for todos routes from router file.
